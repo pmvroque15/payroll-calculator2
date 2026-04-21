@@ -15,6 +15,7 @@ public class Main {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
+            int employeeNumber = 1;
             while ((line = (bufferedReader.readLine())) != null) {
                 String[] parts = line.split("\\|");
                 if (line.startsWith("id")) {
@@ -33,13 +34,13 @@ public class Main {
                 newEmployee.setPayRate(payRate);
 
                 System.out.println("===============================");
-                System.out.println("      Employee Details        ");
+                System.out.printf("      Employee #%s Details        \n", employeeNumber++);
                 System.out.println("===============================");
                 System.out.printf("Employee ID: %s\n", newEmployee.getId());
                 System.out.printf("Employee Name: %s\n", newEmployee.getName());
                 System.out.printf("Hours worked: %s\n", newEmployee.getHoursWorked());
                 System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
-                System.out.printf("Gross Pay Total: $%s\n", newEmployee.getGrossPay(hoursWorked, payRate));
+                System.out.printf("Gross Pay Total: $%s\n", newEmployee.getGrossPay());
                 System.out.println(" ");
 
             }

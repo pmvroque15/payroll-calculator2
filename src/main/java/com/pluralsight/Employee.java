@@ -42,8 +42,8 @@ public class Employee {
     public void setId(int id) {
         this.id = id;
     }
-    public double getGrossPay(double hoursWorked, double payRate) {
-        return grossPay = hoursWorked * payRate;
+    public double getGrossPay() {
+        return this.payRate * this.hoursWorked;
     }
 
     public void setGrossPay(double grossPay) {
