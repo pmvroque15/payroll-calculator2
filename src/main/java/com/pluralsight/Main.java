@@ -1,8 +1,5 @@
 package com.pluralsight;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -12,13 +9,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+//            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
+//            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            //prompts for the employee/user
+            System.out.println("Enter the name of the file employee file to process: ");
+            String file = scanner.nextLine();
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+            bufWriter.close();
             Employee[] employees = new Employee[8];
             int index = 0;
             String line;
             int employeeNumber = 1;
-            while ((line = (bufferedReader.readLine())) != null) {
+            while ((line = (bufWriter.readLine())) != null) {
                 String[] parts = line.split("\\|");
                 if (line.startsWith("id")) {
                     continue;
@@ -38,6 +42,7 @@ public class Main {
                 //Adding in arrays of employees
                 employees[index] = newEmployee;
                 index++;
+
                 System.out.println("===============================");
                 System.out.printf("      Employee #%s Details        \n", employeeNumber++);
                 System.out.println("===============================");
