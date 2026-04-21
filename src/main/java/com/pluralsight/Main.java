@@ -10,10 +10,9 @@ public class Main {
 
     static void main() {
         Scanner scanner = new Scanner(System.in);
-        Employee employee1 = new Employee();
 
         try {
-            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
+            FileReader fileReader = new FileReader("src/main/resources/employeesewfew.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = (bufferedReader.readLine())) != null) {
@@ -44,9 +43,9 @@ public class Main {
 
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println("The file cannot be read. Check your source path of your file name." );
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("File not found.");
         }
     }
 }
