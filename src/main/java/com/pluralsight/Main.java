@@ -40,7 +40,7 @@ public class Main {
                 System.out.printf("Employee Name: %s\n", newEmployee.getName());
                 System.out.printf("Hours worked: %s\n", newEmployee.getHoursWorked());
                 System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
-                System.out.printf("Gross Pay Total: $%s\n", newEmployee.getGrossPay());
+                System.out.printf("Gross Pay Total: $%s\n", newEmployee.calculateGrossPay());
                 System.out.println(" ");
 
             }

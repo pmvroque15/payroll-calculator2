@@ -42,7 +42,7 @@ public class Employee {
     public void setId(int id) {
         this.id = id;
     }
-    public double getGrossPay() {
+    public double calculateGrossPay() {
         return this.payRate * this.hoursWorked;
     }
 
