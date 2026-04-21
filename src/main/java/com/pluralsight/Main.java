@@ -9,29 +9,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try {
-//            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
-//            BufferedReader bufferedReader = new BufferedReader(fileReader);
             //prompts for the employee/user
             System.out.println("Enter the name of the file employee file to process: ");
-            String file = scanner.nextLine();
+            String file = "src/main/resources/" + scanner.nextLine();
 
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             System.out.println("Enter the name of the payroll file to create: ");
-            String createFileName = scanner.nextLine();
+            String createFileName = "src/main/resources/" + scanner.nextLine();
 
             FileWriter fileWriter = new FileWriter(createFileName);
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
-//            Employee[] employees = new Employee[8];
-            int index = 0;
             String line;
             int employeeNumber = 1;
 
             while ((line = (bufferedReader.readLine())) != null) {
                 String[] parts = line.split("\\|");
-                if (line.startsWith("id") || line.startsWith("=") || line.trim().isEmpty()) {
+                line = line.trim();
+                if (line.startsWith("id") || line.startsWith("=") || line.isEmpty()) {
                     continue;
                 }
 
@@ -47,35 +44,22 @@ public class Main {
                 newEmployee.setHoursWorked(hoursWorked);
                 newEmployee.setPayRate(payRate);
 
-                //Adding in arrays of employees
-//                employees[index] = newEmployee;
-//                index++;
                 String output = "===============================\n"
                         + "Employee #" + employeeNumber++ + " Details\n"
                         + "===============================\n"
                         + "Employee ID: " + newEmployee.getId() + "\n"
                         + "Employee Name: " + newEmployee.getName() + "\n"
                         + "Hours worked: " + newEmployee.getHoursWorked() + "\n"
-                        + "Pay Rate: " + newEmployee.getPayRate() +"\n"
-                        + "Gross Pay Total: " + newEmployee.calculateGrossPay() + "\n";
-//                System.out.println("===============================");
-//                System.out.printf("      Employee #%s Details        \n", employeeNumber++);
-//                System.out.println("===============================");
-//                System.out.printf("Employee ID: %s\n", newEmployee.getId());
-//                System.out.printf("Employee Name: %s\n", newEmployee.getName());
-//                System.out.printf("Hours worked: %s\n", newEmployee.getHoursWorked());
-//                System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
-//                System.out.printf("Gross Pay Total: $%s\n", newEmployee.calculateGrossPay());
-//                System.out.println(" ");
-                
-//                line = bufferedReader.readLine();
+                        + "Pay Rate: $" + newEmployee.getPayRate() +"/hour\n"
+                        + "Gross Pay Total: $" + newEmployee.calculateGrossPay() + "\n";
 
                 bufWriter.write(output);
                 bufWriter.newLine();
             }
 
-            fileReader.close();
+            bufferedReader.close();
             bufWriter.close();
+
             System.out.println("File created successfully!");
 
         } catch (FileNotFoundException e) {
