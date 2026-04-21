@@ -15,10 +15,13 @@ public class Main {
             System.out.println("Enter the name of the file employee file to process: ");
             String file = scanner.nextLine();
 
-            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
+            FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            FileWriter fileWriter = new FileWriter(file);
+            System.out.println("Enter the name of the payroll file to create: ");
+            String createFileName = scanner.nextLine();
+
+            FileWriter fileWriter = new FileWriter(createFileName);
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
 //            Employee[] employees = new Employee[8];
@@ -28,9 +31,10 @@ public class Main {
 
             while ((line = (bufferedReader.readLine())) != null) {
                 String[] parts = line.split("\\|");
-                if (line.startsWith("id")) {
+                if (line.startsWith("id") || line.startsWith("=") || line.trim().isEmpty()) {
                     continue;
                 }
+
                 int id = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 double hoursWorked = Double.parseDouble(parts[2]);
@@ -47,13 +51,13 @@ public class Main {
 //                employees[index] = newEmployee;
 //                index++;
                 String output = "===============================\n"
-                        + "Employee #" + employeeNumber++ + "Details\n"
+                        + "Employee #" + employeeNumber++ + " Details\n"
                         + "===============================\n"
-                        + "Employee ID: \n" + newEmployee.getId()
-                        + "Employee Name: \n" + newEmployee.getName()
-                        + "Hours worked: \n" + newEmployee.getHoursWorked()
-                        + "Pay Rate: \n" + newEmployee.getPayRate()
-                        + "Gross Pay Total: \n" + newEmployee.calculateGrossPay();
+                        + "Employee ID: " + newEmployee.getId() + "\n"
+                        + "Employee Name: " + newEmployee.getName() + "\n"
+                        + "Hours worked: " + newEmployee.getHoursWorked() + "\n"
+                        + "Pay Rate: " + newEmployee.getPayRate() +"\n"
+                        + "Gross Pay Total: " + newEmployee.calculateGrossPay() + "\n";
 //                System.out.println("===============================");
 //                System.out.printf("      Employee #%s Details        \n", employeeNumber++);
 //                System.out.println("===============================");
@@ -69,8 +73,11 @@ public class Main {
                 bufWriter.write(output);
                 bufWriter.newLine();
             }
+
             fileReader.close();
             bufWriter.close();
+            System.out.println("File created successfully!");
+
         } catch (FileNotFoundException e) {
             System.err.println("The file cannot be read. Check your source path of your file name." );
         } catch (IOException e) {
