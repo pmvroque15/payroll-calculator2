@@ -14,6 +14,8 @@ public class Main {
         try {
             FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+            Employee[] employees = new Employee[8];
+            int index = 0;
             String line;
             int employeeNumber = 1;
             while ((line = (bufferedReader.readLine())) != null) {
@@ -33,6 +35,9 @@ public class Main {
                 newEmployee.setHoursWorked(hoursWorked);
                 newEmployee.setPayRate(payRate);
 
+                //Adding in arrays of employees
+                employees[index] = newEmployee;
+                index++;
                 System.out.println("===============================");
                 System.out.printf("      Employee #%s Details        \n", employeeNumber++);
                 System.out.println("===============================");
@@ -42,7 +47,8 @@ public class Main {
                 System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
                 System.out.printf("Gross Pay Total: $%s\n", newEmployee.calculateGrossPay());
                 System.out.println(" ");
-
+                
+                line = bufferedReader.readLine();
             }
         } catch (FileNotFoundException e) {
             System.err.println("The file cannot be read. Check your source path of your file name." );
