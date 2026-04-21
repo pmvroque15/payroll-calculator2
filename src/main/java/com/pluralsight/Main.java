@@ -26,8 +26,6 @@ public class Main {
                 double hoursWorked = Double.parseDouble(parts[2]);
                 double payRate = Double.parseDouble(parts[3]);
 
-
-
                 Employee newEmployee;
                 newEmployee = new Employee();
                 newEmployee.setId(id);
@@ -41,7 +39,7 @@ public class Main {
                 System.out.printf("Employee ID: %s\n", newEmployee.getId());
                 System.out.printf("Employee Name: %s\n", newEmployee.getName());
                 System.out.printf("Hours worked: %s\n", newEmployee.getHoursWorked());
-                System.out.printf("Pay Rate: $%s\n", newEmployee.getPayRate());
+                System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
                 System.out.println(" ");
 
             }
