@@ -6,7 +6,7 @@ public class Employee {
     private String name;
     private double hoursWorked;
     private double payRate;
-
+    private double grossPay;
     static void main(String[] args) {
 
     }
@@ -42,6 +42,15 @@ public class Employee {
     public void setId(int id) {
         this.id = id;
     }
+    public double getGrossPay(double hoursWorked, double payRate) {
+        return grossPay = hoursWorked * payRate;
+    }
+
+    public void setGrossPay(double grossPay) {
+
+        this.grossPay = grossPay;
+    }
+
 
     //endregion
 }

@@ -12,7 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            FileReader fileReader = new FileReader("src/main/resources/employeesewfew.csv");
+            FileReader fileReader = new FileReader("src/main/resources/employees.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = (bufferedReader.readLine())) != null) {
@@ -39,6 +39,7 @@ public class Main {
                 System.out.printf("Employee Name: %s\n", newEmployee.getName());
                 System.out.printf("Hours worked: %s\n", newEmployee.getHoursWorked());
                 System.out.printf("Pay Rate: $%s/hour\n", newEmployee.getPayRate());
+                System.out.printf("Gross Pay Total: $%s\n", newEmployee.getGrossPay(hoursWorked, payRate));
                 System.out.println(" ");
 
             }
