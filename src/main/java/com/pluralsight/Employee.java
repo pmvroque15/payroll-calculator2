@@ -4,31 +4,44 @@ package com.pluralsight;
 public class Employee {
     private int id;
     private String name;
+    private double hoursWorked;
+    private double payRate;
 
     static void main(String[] args) {
 
     }
-
-    public Employee() {
+    //region getters/setters
+    public double getPayRate() {
+        return this.payRate;
     }
 
-    public int getEmployeeId() {
-        return this.id;
-    };
+    public void setPayRate(double payRate) {
+        this.payRate = payRate;
+    }
 
-    public void setEmployeeId(int id) {
-        this.id = id;
-    };
-
-    public void setEmployeeName(String name) {
-//        if (name.length() < 2) {
-//            System.err.println("Name has to be at least 2 characters.");
-//        }
-
-        this.name = name;
-    };
-
-    public String getEmployeeName() {
+    public String getName() {
         return this.name;
-    };
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getHoursWorked() {
+        return this.hoursWorked;
+    }
+
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    //endregion
 }
